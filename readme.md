@@ -50,3 +50,11 @@ Please let us know more about your Java experience in a few sentences. For examp
 - I have 3 years experience in Java and I started to use Spring Boot from last year
 - I'm a beginner and just recently learned Spring Boot
 - I know Spring Boot very well and have been using it for many years
+
+### Username / Password
+
+- SophiaB / SophiaPass123
+- JamesS / JamesPass123
+- IsabellaJ / IsabellaPass123
+- LucasW / LucasPass123
+- EmmaL / EmmaPass123
