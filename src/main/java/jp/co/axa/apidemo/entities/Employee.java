@@ -1,12 +1,25 @@
 package jp.co.axa.apidemo.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import jp.co.axa.apidemo.utils.CustomAuthorityDeserializer;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
+/**
+ * Represents an employee entity.
+ * This class maps the employee entity to the "EMPLOYEE" table in the database.
+ * Implements the UserDetails interface for integration with Spring Security.
+ */
 @Entity
 @Table(name = "EMPLOYEE")
 @Getter
@@ -14,7 +27,7 @@ import java.math.BigDecimal;
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
-public class Employee {
+public class Employee implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,6 +46,7 @@ public class Employee {
 
     @Setter
     @Enumerated(EnumType.STRING)
+    @NotNull
     @Column(name = "DEPARTMENT", nullable = false)
     private DepartmentEnum department;
 
@@ -53,5 +67,60 @@ public class Employee {
     @JsonIgnore
     private String employeePassword;
 
+    @JsonDeserialize(using = CustomAuthorityDeserializer.class)
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority("ROLE_EMPLOYEE"));
+        return authorities;
+
+    }
+
+    @Override
+    public String getPassword() {
+
+        return employeePassword;
+
+    }
+
+    @Override
+    public String getUsername() {
+
+        return employeeUsername;
+
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+
+        // TODO: Expiring account behavior not managed
+        return true;
+
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+
+        // TODO: Locking account behavior not managed
+        return true;
+
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+
+        // TODO: Credential account behavior not managed
+        return true;
+
+    }
+
+    @Override
+    public boolean isEnabled() {
+
+        // TODO: Account enable/disable behavior not managed
+        return true;
+
+    }
 
 }

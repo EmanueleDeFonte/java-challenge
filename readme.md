@@ -58,3 +58,12 @@ Please let us know more about your Java experience in a few sentences. For examp
 - IsabellaJ / IsabellaPass123
 - LucasW / LucasPass123
 - EmmaL / EmmaPass123
+
+### What has been done
+
+- Initialization DB with samples data.
+- Entity Validation.
+- Added Logging (also logging Requests/Response of APIs).
+- Added Basic Auth with Spring Security.
+- Added Caching with Redis
+- Added Pagination to APIs
