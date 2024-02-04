@@ -66,3 +66,9 @@ Application (with the embedded H2 database) is ready to be used ! You can access
 - Added Pagination to APIs
 - Tests for Controller / Repository / Service
 - Comments + JavaDocs
+- Containerization with Docker
+
+### Containerization
+1) In the root folder run the command "docker-compose build java-challenge" to build the image of the application.
+2) In the root folder run the command "docker-compose up" to start up the application and Redis.
+3) Use CTRL+C to stop it.
