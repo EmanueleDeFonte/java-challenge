@@ -96,13 +96,12 @@ class EmployeeControllerTest {
     @Test
     void testUpdateEmployee() throws Exception {
 
-        Long employeeId = 1L;
         Employee employee = new Employee(1L, "Sophia Brown", new BigDecimal("5000.25"),
                 DepartmentEnum.DEPARTMENT_1, "SophiaB",
                 "sophia.brown@email.com", "SophiaPass123");
         Mockito.when(employeeService.updateEmployee(Mockito.any(Employee.class))).thenReturn(employee);
 
-        Employee result = employeeController.updateEmployee(employee, employeeId);
+        Employee result = employeeController.updateEmployee(employee);
 
         Assertions.assertEquals(employee, result);
 

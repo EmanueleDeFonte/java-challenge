@@ -62,7 +62,7 @@ Application (with the embedded H2 database) is ready to be used ! You can access
 - Entity Validation.
 - Added Logging (also logging Requests/Response of APIs).
 - Added Basic Auth with Spring Security.
-- Added Caching with Redis
+- Added Caching with Redis -> (This is a requirement to use the APIs now. Personally I used a docker container for Redis.)
 - Added Pagination to APIs
 - Tests for Controller / Repository / Service
 - Comments + JavaDocs

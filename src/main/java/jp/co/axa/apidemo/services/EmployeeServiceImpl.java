@@ -40,6 +40,20 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     /**
+     * Retrieves an employee by employeeUsername.
+     *
+     * @param employeeUsername the username of the employee to retrieve
+     * @return the Employee object with the specified employeeId
+     * @throws Exception if there is an error while retrieving the employee
+     */
+    @Cacheable(value = "employees", key = "#employeeUsername")
+    public Employee getEmployeeByUsername(String employeeUsername) throws Exception {
+
+        return employeeRepository.findByEmployeeUsername(employeeUsername).orElseThrow(() -> new NotFoundException("Employee not found."));
+
+    }
+
+    /**
      * Retrieves an employee by employeeId.
      *
      * @param employeeId the ID of the employee to retrieve

@@ -27,6 +27,15 @@ public interface EmployeeService {
     Employee getEmployee(Long employeeId) throws Exception;
 
     /**
+     * Retrieves an employee using employeeUsername.
+     *
+     * @param employeeUsername the username of the employee to retrieve
+     * @return the Employee object
+     * @throws Exception if there is an error while retrieving the employee
+     */
+    Employee getEmployeeByUsername(String employeeUsername) throws Exception;
+
+    /**
      * Saves an employee.
      *
      * @param employee the Employee object to be saved

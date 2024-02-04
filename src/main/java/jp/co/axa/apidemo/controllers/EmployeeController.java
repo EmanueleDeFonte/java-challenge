@@ -89,6 +89,38 @@ public class EmployeeController {
     }
 
     /**
+     * Retrieves an employee using employeeId.
+     *
+     * @param employeeUsername the username of the employee to retrieve
+     * @return the Employee object
+     * @throws ResponseStatusException if the employee is not found or there is an error while retrieving the employee
+     */
+    @GetMapping("/employees/username/{employeeUsername}")
+    public Employee getEmployeeByUsername(@PathVariable(name = "employeeUsername") String employeeUsername) {
+
+        try {
+
+            return employeeService.getEmployeeByUsername(employeeUsername);
+
+        } catch (Exception e) {
+
+            logger.error("Error during /api/v1/employees/{employeeUsername} GET execution: {}", e.getMessage());
+
+            if (e instanceof NotFoundException) {
+
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
+
+            } else {
+
+                throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
+
+            }
+
+        }
+
+    }
+
+    /**
      * Saves an employee.
      *
      * @param employee the Employee object to be saved
@@ -147,13 +179,11 @@ public class EmployeeController {
      * Updates an employee using employeeId.
      *
      * @param employee   the updated Employee object
-     * @param employeeId the Id of the employee to update
      * @return the updated Employee object
      * @throws ResponseStatusException if the employee is not found or there is an error while updating the employee
      */
     @PutMapping("/employees/{employeeId}")
-    public Employee updateEmployee(@Valid @RequestBody Employee employee,
-                                   @PathVariable(name = "employeeId") Long employeeId) {
+    public Employee updateEmployee(@Valid @RequestBody Employee employee) {
 
         try {
 

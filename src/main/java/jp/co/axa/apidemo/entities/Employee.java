@@ -31,7 +31,6 @@ public class Employee implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonIgnore
     private Long id;
 
     @Setter
@@ -64,7 +63,6 @@ public class Employee implements UserDetails {
     @Size(min = 6, max = 72, message = "Password length must be between 6 and 72 characters.")
     @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).*$", message = "Password must contain at least one digit, one lowercase and one uppercase character.")
     @Column(name = "EMPLOYEE_PASSWORD", nullable = false)
-    @JsonIgnore
     private String employeePassword;
 
     @JsonDeserialize(using = CustomAuthorityDeserializer.class)

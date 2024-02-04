@@ -21,7 +21,7 @@ public class FilterConfig {
         // Register the LoggingFilter so it can be used.
         FilterRegistrationBean<LoggingFilter> registrationBean = new FilterRegistrationBean<>();
         registrationBean.setFilter(new LoggingFilter());
-        registrationBean.addUrlPatterns("/*");
+        registrationBean.addUrlPatterns("/api/v1");
         return registrationBean;
 
     }
