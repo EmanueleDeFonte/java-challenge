@@ -53,9 +53,9 @@ class EmployeeControllerTest {
     void testGetEmployee() throws Exception {
 
         Long employeeId = 1L;
-        Employee employee = new Employee(1L, "Sophia Brown", new BigDecimal("5000.25") ,
+        Employee employee = new Employee(1L, "Sophia Brown", new BigDecimal("5000.25"),
                 DepartmentEnum.DEPARTMENT_1, "SophiaB",
-                "sophia.brown@email.com","SophiaPass123");
+                "sophia.brown@email.com", "SophiaPass123");
         when(employeeService.getEmployee(Mockito.anyLong())).thenReturn(employee);
 
         Employee result = employeeController.getEmployee(employeeId);
@@ -67,9 +67,9 @@ class EmployeeControllerTest {
     @Test
     void testSaveEmployee() {
 
-        Employee employee = new Employee(1L, "Sophia Brown", new BigDecimal("5000.25") ,
+        Employee employee = new Employee(1L, "Sophia Brown", new BigDecimal("5000.25"),
                 DepartmentEnum.DEPARTMENT_1, "SophiaB",
-                "sophia.brown@email.com","SophiaPass123");
+                "sophia.brown@email.com", "SophiaPass123");
         when(employeeService.saveEmployee(Mockito.any(Employee.class))).thenReturn(employee);
 
         Employee result = employeeController.saveEmployee(employee);
@@ -97,9 +97,9 @@ class EmployeeControllerTest {
     void testUpdateEmployee() throws Exception {
 
         Long employeeId = 1L;
-        Employee employee = new Employee(1L, "Sophia Brown", new BigDecimal("5000.25") ,
+        Employee employee = new Employee(1L, "Sophia Brown", new BigDecimal("5000.25"),
                 DepartmentEnum.DEPARTMENT_1, "SophiaB",
-                "sophia.brown@email.com","SophiaPass123");
+                "sophia.brown@email.com", "SophiaPass123");
         Mockito.when(employeeService.updateEmployee(Mockito.any(Employee.class))).thenReturn(employee);
 
         Employee result = employeeController.updateEmployee(employee, employeeId);

@@ -51,9 +51,9 @@ class EmployeeServiceTest {
     void testGetEmployee() throws Exception {
 
         Long employeeId = 1L;
-        Employee employee = new Employee(1L, "Sophia Brown", new BigDecimal("5000.25") ,
+        Employee employee = new Employee(1L, "Sophia Brown", new BigDecimal("5000.25"),
                 DepartmentEnum.DEPARTMENT_1, "SophiaB",
-                "sophia.brown@email.com","SophiaPass123");
+                "sophia.brown@email.com", "SophiaPass123");
         Mockito.when(employeeRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(employee));
 
         Employee result = employeeService.getEmployee(employeeId);
@@ -79,9 +79,9 @@ class EmployeeServiceTest {
     @Test
     void testSaveEmployee() {
 
-        Employee employee = new Employee(1L, "Sophia Brown", new BigDecimal("5000.25") ,
+        Employee employee = new Employee(1L, "Sophia Brown", new BigDecimal("5000.25"),
                 DepartmentEnum.DEPARTMENT_1, "SophiaB",
-                "sophia.brown@email.com","SophiaPass123");
+                "sophia.brown@email.com", "SophiaPass123");
 
         Mockito.when(employeeRepository.save(Mockito.any(Employee.class))).thenReturn(employee);
 
@@ -98,9 +98,9 @@ class EmployeeServiceTest {
     void testDeleteEmployee() throws Exception {
 
         Long employeeId = 1L;
-        Employee employee = new Employee(1L, "Sophia Brown", new BigDecimal("5000.25") ,
+        Employee employee = new Employee(1L, "Sophia Brown", new BigDecimal("5000.25"),
                 DepartmentEnum.DEPARTMENT_1, "SophiaB",
-                "sophia.brown@email.com","SophiaPass123");
+                "sophia.brown@email.com", "SophiaPass123");
         Mockito.when(employeeRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(employee));
 
         employeeService.deleteEmployee(employeeId);
@@ -112,12 +112,12 @@ class EmployeeServiceTest {
     @Test
     void testUpdateEmployee() throws Exception {
 
-        Employee employee = new Employee(1L, "Sophia Brown", new BigDecimal("5000.25") ,
+        Employee employee = new Employee(1L, "Sophia Brown", new BigDecimal("5000.25"),
                 DepartmentEnum.DEPARTMENT_1, "SophiaB",
-                "sophia.brown@email.com","SophiaPass123");
-        Employee oldEmployee = new Employee(1L, "Sophia Brown", new BigDecimal("1250") ,
+                "sophia.brown@email.com", "SophiaPass123");
+        Employee oldEmployee = new Employee(1L, "Sophia Brown", new BigDecimal("1250"),
                 DepartmentEnum.DEPARTMENT_1, "SophiaB",
-                "sophia.brown@email.com","$2a$12$nLEFSdraGRRUfysBZS.F9.rl.sZlzJnlbaTn3rb0eTYdCZrgLiYJW");
+                "sophia.brown@email.com", "$2a$12$nLEFSdraGRRUfysBZS.F9.rl.sZlzJnlbaTn3rb0eTYdCZrgLiYJW");
         Mockito.when(employeeRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(oldEmployee));
         Mockito.when(employeeRepository.save(Mockito.any(Employee.class))).thenReturn(employee);
 

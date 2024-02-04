@@ -28,9 +28,9 @@ public class EmployeeRepositoryTest {
     public void testFindById() {
 
         Long employeeId = 1L;
-        Employee employee = new Employee(1L, "Sophia Brown", new BigDecimal("5000.25") ,
+        Employee employee = new Employee(1L, "Sophia Brown", new BigDecimal("5000.25"),
                 DepartmentEnum.DEPARTMENT_1, "SophiaB",
-                "sophia.brown@email.com","SophiaPass123");
+                "sophia.brown@email.com", "SophiaPass123");
         Mockito.when(employeeRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(employee));
 
         Optional<Employee> result = employeeRepository.findById(employeeId);
@@ -43,9 +43,9 @@ public class EmployeeRepositoryTest {
     public void testFindByEmployeeUsername() {
 
         String employeeUsername = "Aaa Bbb";
-        Employee employee = new Employee(1L, "Sophia Brown", new BigDecimal("5000.25") ,
+        Employee employee = new Employee(1L, "Sophia Brown", new BigDecimal("5000.25"),
                 DepartmentEnum.DEPARTMENT_1, "SophiaB",
-                "sophia.brown@email.com","SophiaPass123");
+                "sophia.brown@email.com", "SophiaPass123");
         Mockito.when(employeeRepository.findByEmployeeUsername(Mockito.anyString())).thenReturn(Optional.of(employee));
 
         Optional<Employee> result = employeeRepository.findByEmployeeUsername(employeeUsername);
@@ -57,9 +57,9 @@ public class EmployeeRepositoryTest {
     @Test
     public void testCreate() {
 
-        Employee employee = new Employee(1L, "Sophia Brown", new BigDecimal("5000.25") ,
+        Employee employee = new Employee(1L, "Sophia Brown", new BigDecimal("5000.25"),
                 DepartmentEnum.DEPARTMENT_1, "SophiaB",
-                "sophia.brown@email.com","SophiaPass123");
+                "sophia.brown@email.com", "SophiaPass123");
         Mockito.when(employeeRepository.save(Mockito.any(Employee.class))).thenReturn(employee);
 
         Employee result = employeeRepository.save(employee);
@@ -71,12 +71,12 @@ public class EmployeeRepositoryTest {
     @Test
     public void testUpdate() {
 
-        Employee existingEmployee = new Employee(1L, "Sophia Brown", new BigDecimal("5000.25") ,
+        Employee existingEmployee = new Employee(1L, "Sophia Brown", new BigDecimal("5000.25"),
                 DepartmentEnum.DEPARTMENT_1, "SophiaB",
-                "sophia.brown@email.com","SophiaPass123");
-        Employee updatedEmployee = new Employee(1L, "James Smith", new BigDecimal("1200") ,
+                "sophia.brown@email.com", "SophiaPass123");
+        Employee updatedEmployee = new Employee(1L, "James Smith", new BigDecimal("1200"),
                 DepartmentEnum.DEPARTMENT_2, "JamesS",
-                "james.smith@email.com","JamesPass123");
+                "james.smith@email.com", "JamesPass123");
 
         Mockito.when(employeeRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(existingEmployee));
         Mockito.when(employeeRepository.save(Mockito.any(Employee.class))).thenReturn(updatedEmployee);
