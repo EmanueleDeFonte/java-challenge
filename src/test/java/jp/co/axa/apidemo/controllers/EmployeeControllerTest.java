@@ -10,7 +10,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
 import java.math.BigDecimal;
@@ -39,7 +38,6 @@ class EmployeeControllerTest {
 
         int page = 0;
         int size = 10;
-        Pageable pageable = PageRequest.of(page, size);
         Page<Employee> employees = Mockito.mock(Page.class);
         when(employeeService.retrieveEmployees(Mockito.any(Pageable.class))).thenReturn(employees);
 
@@ -65,6 +63,21 @@ class EmployeeControllerTest {
     }
 
     @Test
+    void testGetEmployeeByUsername() throws Exception {
+
+        String employeeUsername = "SophiaB";
+        Employee employee = new Employee(1L, "Sophia Brown", new BigDecimal("5000.25"),
+                DepartmentEnum.DEPARTMENT_1, "SophiaB",
+                "sophia.brown@email.com", "SophiaPass123");
+        when(employeeService.getEmployeeByUsername(Mockito.anyString())).thenReturn(employee);
+
+        Employee result = employeeController.getEmployeeByUsername(employeeUsername);
+
+        Assertions.assertEquals(employee, result);
+
+    }
+
+    @Test
     void testSaveEmployee() {
 
         Employee employee = new Employee(1L, "Sophia Brown", new BigDecimal("5000.25"),
@@ -83,11 +96,7 @@ class EmployeeControllerTest {
 
         Long employeeId = 1L;
 
-        Assertions.assertDoesNotThrow(() -> {
-
-            employeeController.deleteEmployee(employeeId);
-
-        });
+        Assertions.assertDoesNotThrow(() -> employeeController.deleteEmployee(employeeId));
 
         verify(employeeService, Mockito.times(1)).deleteEmployee(employeeId);
 
