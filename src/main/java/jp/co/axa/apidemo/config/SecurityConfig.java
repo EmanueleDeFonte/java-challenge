@@ -11,6 +11,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+/**
+ * Configuration class for security settings.
+ */
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -23,6 +26,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 
+    /**
+     * Configures the global authentication manager.
+     *
+     * @param auth the AuthenticationManagerBuilder
+     * @throws Exception if an error occurs during configuration
+     */
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 
@@ -30,11 +39,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 
+    /**
+     * Creates a PasswordEncoder bean.
+     *
+     * @return a PasswordEncoder object
+     */
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+    /**
+     * Configures HTTP security behavior.
+     *
+     * @param http the HttpSecurity
+     * @throws Exception if an error occurs during configuration
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
@@ -43,3 +63,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 }
+
+
