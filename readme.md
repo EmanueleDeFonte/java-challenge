@@ -66,7 +66,8 @@ Application (with the embedded H2 database) is ready to be used ! You can access
 - Added Pagination to APIs
 - Tests for Controller / Repository / Service
 - Comments + JavaDocs
-- Containerization with Docker
+- Containerization with Docker and docker-compose (Docker and docker-compose are requirement.)
+- /shutdown API for shutdown of application
 
 ### Containerization
 1) In the root folder run the command "docker-compose build java-challenge" to build the image of the application.
